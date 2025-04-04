@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Venta de Libros</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <!-- MARGEN SUPERIOR NEGRO -->
+    <div style="background-color: black; padding: 20px; text-align: center;">
+        <img src="https://imgs.search.brave.com/_VEtiQEUaue7iOhe67LZdIdvo16T_CwPTuQtMO2iYzA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy84/LzhlL1VOSUNBRVNf/TG9nby5wbmc"
+        alt="Logo" style="height: 100px;">
+    </div>
+
+    <!-- AQUI SE RENDERIZAN LAS VISTAS -->
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <!-- MARGEN INFERIOR NEGRO -->
+    <footer style="background-color: black; padding: 20px; text-align: center; color: white;">
+        <p>Desarrollado por [Tu Nombre]</p>
+        <p>Desarrollado por [Tu Nombre]</p>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

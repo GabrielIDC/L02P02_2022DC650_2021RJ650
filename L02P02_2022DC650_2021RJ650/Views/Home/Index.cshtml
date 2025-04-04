@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Inicio de Venta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Título principal -->
+<div class="container">
+    <h1 class="text-center mt-4">Venta de Libros</h1>
+    <h3 class="text-center mb-4">Proceso de Venta</h3>
+
+    <h4>Datos del Cliente</h4>
+
+    <form>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="Ingrese su nombre">
+            </div>
+            <div class="col-md-6">
+                <label>Apellido</label>
+                <input type="text" class="form-control" placeholder="Ingrese su apellido">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="ejemplo@correo.com">
+        </div>
+
+        <div class="mb-3">
+            <label>Dirección</label>
+            <input type="text" class="form-control" placeholder="Ingrese su dirección">
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success btn-lg w-100">Iniciar Venta</button>
+        </div>
+    </form>
+</div>
