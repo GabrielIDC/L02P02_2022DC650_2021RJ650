@@ -7,6 +7,6 @@
         public string apellido { get; set; }
         public string email { get; set; }
         public string direccion { get; set; }
-        public DateTime created_at { get; set; }
+        public DateTime? created_at { get; set; }
     }
 }

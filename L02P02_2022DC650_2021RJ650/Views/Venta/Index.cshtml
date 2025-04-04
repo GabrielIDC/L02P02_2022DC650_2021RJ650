@@ -1,0 +1,48 @@
+﻿@model List<L02P02_2022DC650_2021RJ650.Models.libros>
+@{
+    ViewData["Title"] = "Listado de Libros";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4 mb-4">
+    <div class="row">
+        <!-- Lista de libros -->
+        <div class="col-md-8">
+            <h4>Listado de Libros</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Libro</th>
+                        <th>Precio</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var libro in Model)
+                    {
+                        <tr>
+                            <td>@libro.nombre</td>
+                            <td>$@libro.precio</td>
+                            <td>
+                                <form asp-action="Agregar" asp-controller="Venta" method="post">
+                                    <input type="hidden" name="idLibro" value="@libro.id" />
+                                    <button type="submit" class="btn btn-primary btn-sm">Agregar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Total y botón completar -->
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h5>Total: <span id="total-libros">@ViewBag.Total</span></h5>
+                <form asp-action="Completar" asp-controller="Venta" method="post">
+                    <button type="submit" class="btn btn-success w-100 mt-2">Completar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model L02P02_2022DC650_2021RJ650.Models.clientes;
+
+@{
+    ViewData["Title"] = "Inicio de Venta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form asp-action="Index" asp-controller="Inicio" method="post">
+<div class="container">
+    <h1 class="text-center mt-4">Venta de Libros</h1>
+    <h3 class="text-center mb-4">Proceso de Venta</h3>
+
+    <h4>Datos del Cliente</h4>
+
+    @using (Html.BeginForm("IniciarVenta", "Inicio", FormMethod.Post))
+    {
+        <div class="row mb-3">
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.nombre)
+                @Html.TextBoxFor(m => m.nombre, new { @class = "form-control", placeholder = "Ingrese su nombre" })
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.apellido)
+                @Html.TextBoxFor(m => m.apellido, new { @class = "form-control", placeholder = "Ingrese su apellido" })
+            </div>
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.email)
+            @Html.TextBoxFor(m => m.email, new { @class = "form-control", placeholder = "ejemplo@correo.com" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.direccion)
+            @Html.TextBoxFor(m => m.direccion, new { @class = "form-control", placeholder = "Ingrese su dirección" })
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success btn-lg w-100">Iniciar Venta</button>
+        </div>
+    }
+</div>
+</form>
