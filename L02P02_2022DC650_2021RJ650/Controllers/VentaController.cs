@@ -1,5 +1,6 @@
 ﻿using L02P02_2022DC650_2021RJ650.Models;
 using Microsoft.AspNetCore.Mvc;
+using L02P02_2022DC650_2021RJ650.Helpers;
 
 namespace L02P02_2022DC650_2021RJ650.Controllers
 {
@@ -17,7 +18,7 @@ namespace L02P02_2022DC650_2021RJ650.Controllers
                 .Where(l => l.estado == "A") // si solo querés los activos
                 .ToList();
 
-            ViewBag.Total = 0; // aún no se ha agregado ningún libro
+            ViewBag.Total = HttpContext.Session.GetDecimal("Total") ?? 0;
             return View(libros);
         }
 
@@ -29,16 +30,24 @@ namespace L02P02_2022DC650_2021RJ650.Controllers
             if (pedidoId == null)
                 return RedirectToAction("Index", "Inicio");
 
-            // Insertar libro en pedido_detalle
+            var libro = _context.libros.FirstOrDefault(l => l.id == idLibro);
+            if (libro == null)
+                return RedirectToAction("Index");
+
+            // Insertar en pedido_detalle
             var detalle = new pedido_detalle
             {
                 id_pedido = pedidoId.Value,
                 id_libro = idLibro,
                 created_at = DateTime.Now
             };
-
             _context.pedido_detalles.Add(detalle);
             _context.SaveChanges();
+
+            // Obtener total actual de sesión y sumarle el nuevo precio
+            decimal totalActual = HttpContext.Session.GetDecimal("Total") ?? 0;
+            totalActual += libro.precio;
+            HttpContext.Session.SetDecimal("Total", totalActual);
 
             return RedirectToAction("Index");
         }
